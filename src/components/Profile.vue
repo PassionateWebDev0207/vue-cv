@@ -35,7 +35,6 @@
 const me = require('@/assets/me.jpg');
 
 export default {
-  name: 'profile',
   data () {
     return {
       profilePic: me,

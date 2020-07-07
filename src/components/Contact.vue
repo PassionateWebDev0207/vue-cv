@@ -2,8 +2,7 @@
     <div>
         <v-card>
             <v-card-title>
-                <v-card-row :img="contactMe" height="200px">
-                </v-card-row>
+                <v-card-row :img="contactMe" height="200px" />
             </v-card-title>
 
             <v-alert error dismissible v-model="alert">
@@ -18,16 +17,13 @@
 
                             <v-row>
                                 <v-col xs12 sm12 md12 lg6>
-                                    <v-text-field label="Your E-mail *" name="email">
-                                    </v-text-field>
+                                    <v-text-field label="Your E-mail *" name="email" />
                                 </v-col>
                                 <v-col xs12 sm12 md12 lg6>
-                                    <v-text-field label="Subject *" name="_subject">
-                                    </v-text-field>
+                                    <v-text-field label="Subject *" name="_subject" />
                                 </v-col>
                             </v-row>
-                            <v-text-field name="message" label="Message *" v-model="message" multi-line>
-                            </v-text-field>
+                            <v-text-field name="message" label="Message *" v-model="message" multi-line />
 
                             <span style="color:rgba(0,0,0,.38)">
                                 * required fileds
@@ -55,7 +51,6 @@
 const contact_img = require('@/assets/contactme.jpg');
 
 export default {
-  name: 'contact',
   data () {
     return {
         title: 'Contact me',

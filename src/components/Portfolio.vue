@@ -34,7 +34,6 @@
 
 <script>
 export default {
-  name: 'portfolio',
   data () {
     return {
       title: 'Portfolio',

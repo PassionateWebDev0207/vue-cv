@@ -33,7 +33,6 @@
 const ust_logo = require('@/assets/ust-hk.jpg');
 
 export default {
-  name: 'education',
   data () {
     return {
       title: 'Education',

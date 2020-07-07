@@ -23,8 +23,8 @@
             </v-card-text>
         </v-card>
 
-        <Experience></Experience>
-        <Education></Education>
+        <experience />
+        <education />
     </div>
 </template>
 
@@ -33,7 +33,6 @@ import Experience from '@/components/Experience'
 import Education from '@/components/Education'
 
 export default {
-  name: 'about',
   data () {
     return {
       title: 'About me',

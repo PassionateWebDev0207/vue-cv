@@ -41,7 +41,6 @@ const mesosphere_logo = require('@/assets/mesosphere.jpg');
 const maz_logo = require('@/assets/maz.jpg');
 
 export default {
-  name: 'experience',
   data () {
     return {
       title: 'Experience',

@@ -34,7 +34,7 @@
           <v-container fluid="fluid">
             <v-row>
               <v-col xs12 sm12 md5 lg4>
-                <Profile></Profile>            
+                <profile />
 
                 <!-- modal -->
                 <v-modal v-model="modal" class="cv-modal">
@@ -88,7 +88,6 @@ var cv_en = require("file-loader?name=[name].[ext]!./files/JimmyYu.pdf");
 import Profile from '@/components/Profile'
 
 export default {
-  name: 'app',
   data () {
     return {
       title: 'CV/Portfolio',
