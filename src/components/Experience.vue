@@ -22,8 +22,11 @@
                         </div>
                     </v-row>
                     
-                    <div class="about-text" v-html="item.text"></div>
-                    <v-divider v-if="index !== (work.length-1)"></v-divider>
+                    <div class="about-text" v-html="item.text" />
+                    <div class="about-techs">
+                        <div v-for="tech in item.techs" :key="tech" class="tech-item">{{tech}}</div> 
+                    </div>
+                    <v-divider v-if="index !== (work.length-1)" />
                 </li>
             </ul>
         </v-card-text>
@@ -31,8 +34,11 @@
 </template>
 
 <script>
-const aa_logo = require('@/assets/aa.jpg');
-const impuls_logo = require('@/assets/impuls.png');
+const self_logo = require('@/assets/self.jpg');
+const de_logo = require('@/assets/de.jpg');
+const sb_logo = require('@/assets/sb.jpg');
+const mesosphere_logo = require('@/assets/mesosphere.jpg');
+const maz_logo = require('@/assets/maz.jpg');
 
 export default {
   name: 'experience',
@@ -44,25 +50,16 @@ export default {
       sectionTooltip: 'Hide section',
       work:[
         {
-            title:'Alarm automatika d.o.o.',
-            logo:aa_logo, 
-            pos:'Software Developer',
-            time:'Nov 2016 - Present',
-            text:'Working as Software Developer in Research & Development department at Alarm automatika d.o.o. ' +
-                'Worked on several different projects and the ones I worked most on are a self-ticketing cashier for parking lots and a web application ' +
-                'for event management (ticketing system) and supervision. For development I mainly used C#, JavaScript/jQuery, ' +
-                'HTML, CSS and Microsoft SQL Server.' +
-                '<br/>Company website: <a href="https://www.alarmautomatika.com/en">https://www.alarmautomatika.com</a>'
-        },
-        {
-            title:'Impuls ing d.o.o.',
-            logo:impuls_logo, 
-            pos:'Software Developer',
-            time:'Nov 2015 - Jul 2016',
-            text:'Worked as Software Developer at Impuls ing d.o.o. ' +
-                'Responsible for the development of a module for an existing desktop application. ' +
-                'Worked with C# and Microsoft SQL Server (Transact-SQL).' +
-                '<br/>Product website: <a href="http://www.integracert.com">http://www.integracert.com</a>'
+            title:'Self-Employed',
+            logo:self_logo, 
+            pos:'Freelance Software Engineer',
+            time:'Jun 2019 - Present',
+            text:'- Built rich SPAs using Vue/Nuxt, React, Angular.<br/>' +
+                '- Developed with serverless Node.js and JavaScript. <br/>' +
+                '- Built RESTful APIs using a serverless framework. <br/>' +
+                '- Developed architectures on top of AWS Lambda, AWS CloudFormation, and AWS S3. <br/>' +
+                '- Collaborated with other developers in an Agile environment, using Scrum methodology. <br/>',
+            techs: ['Vue.js', 'Nuxt.js', 'React', 'Angular', 'AWS', 'Docker', 'Node.js', 'Serverless', 'Microservices']
         }
       ]
     }
@@ -88,5 +85,13 @@ export default {
 </script>
 
 <style scoped>
-
+    #section-text-exp .about-techs .tech-item{
+        border:1px solid #9ac;
+        border-radius:2px;
+        color:#646769;
+        font-size:13px;
+        padding:0 3px 0 3px;
+        margin:3px 4px 0 0;
+        display: inline-block;
+    }
 </style>

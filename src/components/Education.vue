@@ -12,13 +12,12 @@
             <ul class="about-list">
                 <li class="about-list-item" v-for="(item, index) in education" :key="index">
                     <v-row>
-                        <!--<div class="edu-logo">
+                        <div class="edu-logo">
                             <img :src="item.logo" height="70" width="70">
-                        </div>-->
+                        </div>
                         <div class="about-header">
                             <div class="about-pos">{{item.degree}}</div>
                             <div class="about-title">{{item.title}}</div>
-                            <div class="about-time">{{item.time}}</div>
                         </div>
                     </v-row>
 
@@ -31,6 +30,8 @@
 </template>
 
 <script>
+const ust_logo = require('@/assets/ust-hk.jpg');
+
 export default {
   name: 'education',
   data () {
@@ -41,23 +42,11 @@ export default {
       sectionTooltip: 'Hide section',
       education:[
         {
-            title:'Polytechnic of Rijeka - Croatia',
-            logo:'', 
-            degree:'Bachelor of Engineering, Telematics',
-            time:'Oct 2012 - Mar 2017',
-            text:'Bachelor\'s degree in Telematics.<br/>' +
-                'Software Development/Engineering (C++, Java, SQL), Automation, Telecommunications, ' +
-                'Electrical engineering, System design,...' +
-                '<br/>University website: <a href="https://www.veleri.hr/">https://www.veleri.hr</a>'
-        },
-        {
-            title:'Technical University of Applied Sciences Wildau - Germany',
-            logo:'', 
-            degree:'Telematics',
-            time:'Mar 2015 - Jul 2015',
-            text:'Exchange semester at TH Wildau.<br/>' +
-                'Software project (JavaFX) and German language.' +
-                '<br/>University website: <a href="http://www.th-wildau.de/">http://www.th-wildau.de</a>'
+            title:'The Hong Kong University of Science and Technology',
+            logo:ust_logo, 
+            degree:'Bachelor of Computer Science',
+            text:'Bachelor\'s degree in Computer Science.<br/>' +
+                '<br/>University website: <a href="https://www.ust.hk/">https://www.ust.hk/</a>'
         }
       ]
     }
