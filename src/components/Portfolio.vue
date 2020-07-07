@@ -22,9 +22,9 @@
                             <v-icon><i class="fa fa-github"></i></v-icon>
                         </v-btn>
                         <v-spacer></v-spacer>
-                        <!--<router-link v-if="project.link !== ''" :to="project.link">-->
+                        <a v-if="project.link !== ''" :href="project.link" target="_blank">
                             <v-btn flat class="prim-col">View project</v-btn>
-                        <!--</router-link>-->
+                        </a>
                     </v-card-row>
                 </v-card>
             <!--</v-col>
@@ -39,28 +39,20 @@ export default {
       title: 'Portfolio',
       portfolio:[
         {
-            title:'Portfolio site', 
+            title:'Gas Media Refinery Dashboard', 
             thumbnail:'', 
-            text:'This portfolio site was created with Vue.js.',
-            tech:['Vue.js','Vuetify'],
+            text:'Refinery Internal Dashboard for Gas Media Group',
+            tech:['Vue.js','Nuxt.js', 'Element UI', 'Highcharts', 'Video.js', 'HTML5', 'CSS3'],
             github:'',
-            link:''
+            link:'https://refinery.gasmedia.com'
         },
         {
-            title:'MyBiz v1', 
+            title:'Real World Texture', 
             thumbnail:'', 
-            text:'A web application for creating and exporting business proposals.',
-            tech:['C#','MS SQL Server','JavaScript/jQuery','HTML','CSS','Material Design Lite'],
+            text:'Simplify cooperation between architects, manufacturers and 3D artists by creating an understandable environment that helps to share data and to work together on projects.',
+            tech:['Vue.js','Nuxt.js','HTML','CSS'],
             github:'',
-            link:''
-        },
-        {
-            title:'MyBiz v2', 
-            thumbnail:'', 
-            text:'Upgrade from Version 1. In early phases of development.',
-            tech:['Vue.js','Quasar Framework','...'],
-            github:'',
-            link:''
+            link:'https://reawote.com'
         }
       ]
     }
