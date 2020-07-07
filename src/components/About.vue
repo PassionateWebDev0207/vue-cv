@@ -44,7 +44,7 @@ export default {
             'I\'ve been obsessed with the idea of using software to solve practical problems. ' +
             'Software engineering is a never ending puzzle that I\'m passionately engaged in solving. ' +
             'I believe in the power of programming to transform and improve the lives of people around the world. ' +
-            'For my first professional contract, I was given the opportunity to lead a full UI/UX overhaul start up\'s website using React. ' +
+            'For my first professional contract, I was given the opportunity to lead a full UI/UX overhaul start up\'s website using Vue/Nuxt. ' +
             'This contract quickly turned into a full time offer and I have happily expanded my role as a software engineer. ' +
             'I’ve been working as a senior web technologies expert for 7 years and built many websites & web apps for various industries. ' +
             'Through Development, I could get the good understanding of several industries like social media, healthcare, real estate, construction, finance service, etc. ',
