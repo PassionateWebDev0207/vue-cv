@@ -2,7 +2,7 @@
   "name": "vue-cv",
   "version": "1.0.0",
   "description": "A Vue.js CV/Portfolio site",
-  "author": "Ivan Martić <ivan.martic.ri@gmail.com>",
+  "author": "Jimmy",
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
