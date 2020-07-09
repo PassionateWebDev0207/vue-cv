@@ -11,16 +11,18 @@
       </v-toolbar>
 
       <v-list>
-        <router-link v-for="(item, index) in menu" :key="index" :to="item.path">
-          <v-list-tile>
-            <v-list-tile-avatar>
-              <v-icon>{{ item.icon }}</v-icon>
-            </v-list-tile-avatar>
-            <v-list-tile-content>
-              <v-list-tile-title v-text="item.text" style="font-weight:400"/>
-            </v-list-tile-content>
-          </v-list-tile>
-        </router-link>
+        <v-list-tile
+          v-for="(item, index) in menu"
+          :key="index"
+          @click.native="changeView(item.text)"
+        >
+          <v-list-tile-avatar>
+            <v-icon>{{ item.icon }}</v-icon>
+          </v-list-tile-avatar>
+          <v-list-tile-content>
+            <v-list-tile-title v-text="item.text" style="font-weight:400"/>
+          </v-list-tile-content>
+        </v-list-tile>
       </v-list>
 
       <div class="menu-footer text-xs-center">
@@ -34,7 +36,41 @@
           <v-container fluid="fluid">
             <v-row>
               <v-col xs12 sm12 md5 lg4>
-                <profile />
+                <v-card class="profile-card">
+
+                  <img :src="profilePic">
+
+                  <div class="profile-header">
+                    <div class="md-title info-heading">Jimmy Yu</div>
+                    <div class="info-subheading">Web Technologies Expert</div>
+                  </div>
+
+                  <div class="infos">
+                    <ul class="profile-list" v-for="(item, index) in profileList" :key="index">
+                      <li>
+                        <a v-if="item.link !== null" :href="item.link">
+                          <span class="title" v-if="item.fa == null"><v-icon>{{item.icon}}</v-icon></span>
+                          <span class="title" v-else><i :class="item.icon"></i></span>
+                          <span class="text">{{item.text}}</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div class="profile-menu">
+                    <v-btn
+                      v-for="(item, index) in menu"
+                      :key="index"
+                      dark
+                      flat
+                      v-tooltip:bottom="{ html: item.text }"
+                      @click.native="changeView(item.text)"
+                    >
+                      <v-icon>{{item.icon}}</v-icon>
+                    </v-btn>
+                  </div>
+
+                </v-card>
 
                 <!-- modal -->
                 <v-modal v-model="modal" class="cv-modal">
@@ -71,7 +107,9 @@
               </v-col>
               <v-col xs12 sm12 md7 lg8>
                 <transition name="fade" mode="out-in">
-                  <router-view></router-view>
+                  <about v-if="currentMenu === 'About me'" />
+                  <portfolio v-if="currentMenu === 'Portfolio'" />
+                  <contact v-if="currentMenu === 'Contact me'" />
                 </transition>
               </v-col>
             </v-row>
@@ -84,37 +122,54 @@
 </template>
 
 <script>
-var cv_en = require("file-loader?name=[name].[ext]!../files/JimmyYu.pdf");
-import Profile from '@/components/Profile'
+import About from '@/components/About'
+import Portfolio from '@/components/Portfolio'
+import Contact from '@/components/Contact'
+var cv_en = require("file-loader?name=[name].[ext]!../files/JimmyYu.pdf")
+const me = require('@/assets/me.jpg')
 
 export default {
+  components:{
+    About,
+    Contact,
+    Portfolio
+  },
   data () {
     return {
       title: 'CV/Portfolio',
       sidebar: false,
       modal: false,
+      currentMenu: 'About me',
       menu:[
-        {path:'/about', text:'About me', icon:'person'},
-        {path:'/portfolio', text:'Portfolio', icon:'work'},
-        {path:'/contact', text:'Contact me', icon:'mail'}
+        {text:'About me', icon:'person'},
+        {text:'Portfolio', icon:'work'},
+        {text:'Contact me', icon:'mail'}
       ],
       cv_langs:[
         {text:'English', value:'en'}
       ],
-      cv_lang: 'en'
+      cv_lang: 'en',
+      profilePic: me,
+      profileList:[
+        {text:'jimmyyu0207@gmail.com', icon:'mail', link:'mailto:jimmyyu0207@gmail.com?Subject=Hello!'},
+        {text:'+1 717 287 5835', icon:'phone'},
+        {text:'live:p.webdev0207', icon:'fa fa-skype', fa:'sykpe'},
+        {text:'LinkedIn profile', icon:'fa fa-linkedin', fa:'linkedin', link:'https://www.linkedin.com/in/jimmy-yu-5639941a2/'},
+        {text:'GitHub profile', icon:'fa fa-github', fa:'github', link:'https://github.com/PassionateWebDev0207'}
+      ]
     }
   },
   methods: {
-    getCurrentYear: function(){
+    getCurrentYear() {
       return new Date().getFullYear();
     },
-    viewCV: function(){
+    viewCV() {
       window.open(cv_en)
       this.modal = false;
+    },
+    changeView(menu) {
+      this.currentMenu = menu;
     }
-  },
-  components:{
-    Profile
   }
 }
 </script>
@@ -200,4 +255,24 @@ export default {
   .input-group__details:after{
     background-color: #146 !important;
   }
+  .profile-card{margin-top:67px;background-color:#146 !important;color:white;text-align:center;}
+
+  .profile-card img{margin-top:-67px;width:135px;height:135px;border-radius:50%;box-shadow:0 2px 5px 0 rgba(0, 0, 0, 0.18), 0 2px 10px 0 rgba(0, 0, 0, 0.14);}
+
+  .profile-header{padding:35px 35px 19px 35px;}
+
+  .info-heading{font-size:37px;font-weight:500;color:#fff;text-shadow:2px 2px 4px rgba(0, 0, 0, 0.29)}
+  .info-subheading{font-weight:400;font-size:16px;color:#d2d2d2;text-shadow:2px 2px 4px rgba(0, 0, 0, 0.29);margin-top:-10px}
+
+  .infos{padding:20px 0 50px 0}
+  .profile-list{list-style-type: none;padding:0}
+  .profile-list li{padding-bottom:8px}
+  .profile-list .title{color:#fff;display:inline-flex;vertical-align:middle;padding-bottom:4px}
+  .profile-list .title i{font-size:23px;}
+  .profile-list .title .fa{padding-left:2px;}
+  .profile-list .text{font-size:16px;font-weight:400;line-height:20px;color:#fff;}
+  i{font-size:23px;}
+  .fa{padding-left:3px;}
+
+  .profile-menu{border-top:1px solid rgba(150,175,185,.4)}
 </style>

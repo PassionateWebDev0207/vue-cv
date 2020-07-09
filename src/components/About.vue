@@ -1,31 +1,31 @@
 <template>
-    <div>
-        <v-card id="about-section">
-            <v-card-title>
-                {{title}}
-                <v-spacer></v-spacer>
-                <v-btn icon flat v-tooltip:left="{ html: sectionTooltip }" @click.native="section = !section">
-                    <v-icon>{{sectionIcon}}</v-icon>
-                </v-btn>
-            </v-card-title>
+  <div>
+    <v-card id="about-section">
+      <v-card-title>
+        {{title}}
+        <v-spacer></v-spacer>
+        <v-btn icon flat v-tooltip:left="{ html: sectionTooltip }" @click.native="section = !section">
+          <v-icon>{{sectionIcon}}</v-icon>
+        </v-btn>
+      </v-card-title>
 
-            <v-card-text id="section-text">
-                <span>{{about}}</span>
-                <div v-html="getInTouch"></div>
-                <div class="tech-section">
-                    <div>Some technologies I use:</div>
-                    <div v-for="(tech, index) in techIUse" :key="index" class="tech-item">{{tech}}</div>                            
-                </div>
-                <div class="lang-section">
-                    <div>Languages I speak:</div>
-                    <div v-for="(lang, index) in langsISpeak" :key="index" class="tech-item">{{lang}}</div>                            
-                </div>
-            </v-card-text>
-        </v-card>
+      <v-card-text id="section-text">
+        <span>{{about}}</span>
+        <div v-html="getInTouch"></div>
+        <div class="tech-section">
+          <div>Some technologies I use:</div>
+          <div v-for="(tech, index) in techIUse" :key="index" class="tech-item">{{tech}}</div>                            
+        </div>
+        <div class="lang-section">
+          <div>Languages I speak:</div>
+          <div v-for="(lang, index) in langsISpeak" :key="index" class="tech-item">{{lang}}</div>                            
+        </div>
+      </v-card-text>
+    </v-card>
 
-        <experience />
-        <education />
-    </div>
+    <experience />
+    <education />
+  </div>
 </template>
 
 <script>
@@ -54,47 +54,45 @@ export default {
       langsISpeak: ['English']      
     }
   },
-  methods: {
-
-  },
   watch: {
     section: function() {
-        if(!this.section){
-            document.getElementById('section-text').style.display = "none";
-            this.sectionIcon = 'expand_more';
-            this.sectionTooltip = 'Show section';
-        }
-        else{
-            document.getElementById('section-text').style.display = "block";
-            this.sectionIcon = 'expand_less';
-            this.sectionTooltip = 'Hide section';
-        }
+      if(!this.section){
+        document.getElementById('section-text').style.display = "none";
+        this.sectionIcon = 'expand_more';
+        this.sectionTooltip = 'Show section';
+      }
+      else{
+        document.getElementById('section-text').style.display = "block";
+        this.sectionIcon = 'expand_less';
+        this.sectionTooltip = 'Hide section';
+      }
     }
   },
   components:{
-    Experience, Education
+    Experience,
+    Education
   }
 }
 </script>
 
 <style>
-    .about-list{list-style-type:none;padding:0;margin-top:7px}
-    .about-logo{padding:4px 10px 0 7px}
-    .about-header{margin-bottom:15px;padding-left:7px}
-    .divider{margin-top:28px;margin-bottom:28px}
-    .about-pos{font-size:20px;font-weight:400}
-    .about-title{font-size:15px;font-weight:500;color:#333;margin-right:10px}
-    .about-time{padding-top:2px;font-weight:400;color:#333}
+  .about-list{list-style-type:none;padding:0;margin-top:7px}
+  .about-logo{padding:4px 10px 0 7px}
+  .about-header{margin-bottom:15px;padding-left:7px}
+  .divider{margin-top:28px;margin-bottom:28px}
+  .about-pos{font-size:20px;font-weight:400}
+  .about-title{font-size:15px;font-weight:500;color:#333;margin-right:10px}
+  .about-time{padding-top:2px;font-weight:400;color:#333}
 
-    #about-section .tech-section{margin-top:25px;}
-    #about-section .lang-section{margin-top:13px;}
-    #about-section .tech-item{
-        border:1px solid #9ac;
-        border-radius:2px;
-        color:#646769;
-        font-size:13px;
-        padding:0 3px 0 3px;
-        margin:3px 4px 0 0;
-        display: inline-block;
-    }
+  #about-section .tech-section{margin-top:25px;}
+  #about-section .lang-section{margin-top:13px;}
+  #about-section .tech-item{
+    border:1px solid #9ac;
+    border-radius:2px;
+    color:#646769;
+    font-size:13px;
+    padding:0 3px 0 3px;
+    margin:3px 4px 0 0;
+    display: inline-block;
+  }
 </style>

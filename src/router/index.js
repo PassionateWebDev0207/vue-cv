@@ -3,10 +3,7 @@ import Router from 'vue-router'
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
 
-import Home from '@/views'
-import About from '@/components/About'
-import Portfolio from '@/components/Portfolio'
-import Contact from '@/components/Contact'
+import Home from '@/views/index.vue'
 
 Vue.use(Router)
 Vue.use(Vuetify)
@@ -16,40 +13,9 @@ const router = new Router({
   routes: [
     {
       path: '/',
-      component: Home,
-      redirect:'/about',
-      children: [
-        {
-          path: '/about',
-          name: 'About',
-          component: About,
-          meta: {
-            title:'Jimmy Yu'
-          }
-        },
-        {
-          path: '/portfolio',
-          name: 'Portfolio',
-          component: Portfolio,
-          meta: {
-            title:'Portfolio | Jimmy Yu'
-          }
-        },
-        {
-          path: '/contact',
-          name: 'Contact',
-          component: Contact,
-          meta: {
-            title:'Contact me | Jimmy Yu'
-          }
-        }
-      ]
-    },
+      component: Home
+    }
   ]
-})
-
-router.afterEach(route => {
-	document.title = route.meta.title;
 })
 
 export default router
